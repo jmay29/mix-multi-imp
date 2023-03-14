@@ -95,7 +95,7 @@ dfCC[, catTraitsMAR] <- lapply(dfCC[, catTraitsMAR], as.factor)
 # Error rate file handling. ---
 # Section 2 wrote error files for each trait and imputation method. Now we must read those files into R. For example, I have relocated the error files to a folder called Results/ErrorRates/All/.
 # Read in the error rate files as dataframes.
-errorFiles <- list.files(path = "Results/ErrorRates/", pattern = paste(orderName, ".+", "ErrorRates.csv", sep = ""))
+errorFiles <- list.files(path = "Results/ErrorRates/", pattern = paste(orderName, ".+", "ErrorRates.csv", sep = ""), recursive = T)
 l_dfErrors <- lapply(paste("Results/ErrorRates/", errorFiles, sep = ""), fread, data.table = F)
 # Name according to file.
 names(l_dfErrors) <- errorFiles
@@ -127,7 +127,7 @@ for(t in 1:length(traitsMAR)){
 # Parameter file handling. ---
 # Repeat same steps to handle the parameter files.
 # Read in the parameter files as dataframes.
-paramFiles <- list.files(path = "Results/ErrorRates/", pattern = paste(orderName, ".+", "_Parameters.csv", sep = ""))
+paramFiles <- list.files(path = "Results/ErrorRates/", pattern = paste(orderName, ".+", "_Parameters.csv", sep = ""), recursive = T)
 l_dfParams <- lapply(paste("Results/ErrorRates/", paramFiles, sep = ""), fread, data.table = F)
 # Name according to file.
 names(l_dfParams) <- paramFiles
